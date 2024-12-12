@@ -1,0 +1,44 @@
+*,
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    margin-top: 25%;
+}
+.container {
+    margin: 0 auto;
+    display: flex;
+    border: 1px solid red;
+    max-width: 350px;
+    flex-direction: column;
+}
+
+.display {
+    border: 1px solid black;
+    padding: 1rem;
+    text-align: right;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.row {
+    display: flex;
+    gap: 5px;
+    padding: 5px;
+}
+
+.row button {
+    flex-basis: 50px;
+    height: 50px;
+    flex-grow: 1;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+#zero {
+    flex-grow: 4;
+}
