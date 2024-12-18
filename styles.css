@@ -4,41 +4,75 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Roboto";
+}
+
+body {
+    background-color: black;
 }
 
 .wrapper {
-    margin-top: 25%;
+    margin-top: 200px;
 }
 .container {
     margin: 0 auto;
     display: flex;
-    border: 1px solid red;
     max-width: 350px;
     flex-direction: column;
+    color: white;
+    border: 3px solid #61677A;
+    border-radius: 10px;
 }
 
 .display {
+    display: flex;
+    flex-basis: 5rem;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 1rem;
+    overflow: hidden;
     border: 1px solid black;
-    padding: 1rem;
     text-align: right;
     font-weight: bold;
     font-size: 2em;
+    border: 3px solid #61677A;
 }
 
 .row {
     display: flex;
-    gap: 5px;
-    padding: 5px;
+    gap: 1px;
+    margin: 2px;
 }
 
 .row button {
     flex-basis: 50px;
     height: 50px;
     flex-grow: 1;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 1em;
+    color: white;
+    border: 1px solid #272E49;
+    margin: 2px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-#zero {
-    flex-grow: 4;
+.digit {
+    background-color: #5B667D;
+}
+
+.operator {
+    background-color: #FF9E0B;
+}
+
+#clear, #clearAll, #negative {
+    background-color: #3C4051;
+}
+
+.row:last-child button:first-child {
+    flex-grow: 3.7;
+}
+
+.row:last-child button:nth-child(2) {
+    background-color: #5B667D;
 }
