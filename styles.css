@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.calculator {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.calculator-keypad {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+
+button {
+  flex: 1 0 20%;
+  padding: 25px 0;
+}
+
+.calculator-keypad button:last-child {
+  flex-grow: 7;
+}
+
+.calculator-display {
+  text-align: end;
+  margin-bottom: 1rem;
+  padding-right: 1rem;
+  font-size: 2em;
+  border: 1px solid black;
+}
