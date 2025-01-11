@@ -1,41 +1,47 @@
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 *,
 *:before,
 *:after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .calculator {
-  height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
 }
 
-.calculator-keypad {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 3px;
+.wrapper {
+    width: 70%;
+    max-width: 370px;
+}
+.calculator-keypad > * {
+    display: flex;
+    justify-content: center;
 }
 
 button {
-  flex: 1 0 20%;
-  padding: 25px 0;
+    flex: 1;
+    height: 4.5rem;
+    margin: 2px;
 }
 
-.calculator-keypad button:last-child {
-  flex-grow: 7;
+.calculator-keypad > div:nth-child(5) > button:nth-child(3) {
+    flex-grow: 2.05;
 }
 
 .calculator-display {
-  text-align: end;
-  margin-bottom: 1rem;
-  padding-right: 1rem;
-  font-size: 2em;
-  border: 1px solid black;
+    border: 1px solid black;
+    margin-bottom: 1rem;
+    padding: 2rem 0.5rem 2rem;
+    overflow: hidden;
+    direction: rtl;
+    font-size: 2.5em;
 }
