@@ -5,6 +5,10 @@ const clearButton = document.querySelector(".clear");
 keypad.addEventListener("click", updateDisplay);
 clearAllButton.addEventListener("click", clearAll);
 clearButton.addEventListener("click", clear);
+keypad.addEventListener("click", getInput);
+
+let userInput = [];
+let operatorSelected = false;
 
 function add(a, b) {
   return a + b;
@@ -27,26 +31,33 @@ let operandTwo;
 let operator;
 
 function operate(a, b, operator) {
-    switch (operator) {
-        case '+': return add(a, b);
-        break;
-        case '-': return subtract(a, b);
-        break;
-        case '*': return multiply(a, b);
-        break;
-        case '/': return divide (a, b);
-        break;
-    }
+  switch (operator) {
+    case "+":
+      return add(a, b);
+      break;
+    case "-":
+      return subtract(a, b);
+      break;
+    case "*":
+      return multiply(a, b);
+      break;
+    case "/":
+      return divide(a, b);
+      break;
+  }
 }
 
 function updateDisplay(e) {
-  let digit = e.target.innerText;
+  let buttonValue = e.target.innerText;
   if (e.target.classList.contains("digit")) {
     if (display.innerText === "0") {
       display.innerText = "";
+    } else if (operatorSelected) {
+      display.innerText = "";
+      operatorSelected = false;
     }
 
-    display.innerText += digit;
+    display.innerText += buttonValue;
   }
 }
 
@@ -60,5 +71,20 @@ function clear() {
 
   if (display.innerText === "") {
     display.innerText = "0";
+  }
+}
+
+function getInput(e) {
+  let input = e.target.innerText;
+
+  if (
+    e.target.classList.contains("digit") ||
+    e.target.classList.contains("operator")
+  ) {
+    userInput.push(input);
+  }
+
+  if (e.target.classList.contains("operator")) {
+    operatorSelected = true;
   }
 }
