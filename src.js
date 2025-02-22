@@ -98,6 +98,14 @@ function clear() {
 function getInput(e) {
   let input = e.target.innerText;
 
+  if (e.target.classList.contains("operator")) {
+    if (operatorSelectedFlag) {
+      evaluateExpression();
+      return;
+    }
+    operator = input;
+  }
+
   if (
     e.target.classList.contains("digit") ||
     e.target.classList.contains("decimal")
