@@ -39,6 +39,6 @@ button {
     margin-bottom: .5rem;
     padding: 1.5rem 0.5rem 1.5rem;
     overflow: hidden;
-    direction: rtl;
     font-size: 1.5em;
+    text-align: end;
 }
