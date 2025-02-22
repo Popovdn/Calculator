@@ -28,8 +28,14 @@ function divide(a, b) {
   return a / b;
 }
 
-let operandOne;
-let operandTwo;
+function floatify(number) {
+  // * Floating point numbers cannot be accurately represented in binary
+  // * 0.1 + 0.2 ->  0.30000000000000004
+  return parseFloat(number.toFixed(10));
+}
+
+let operandOne = "";
+let operandTwo = "";
 let operator;
 
 function operate(a, b, operator) {
