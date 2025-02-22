@@ -69,6 +69,11 @@ function updateDisplay(e) {
     display.innerText += buttonValue;
   }
 
+  if (
+    // * If decimal is clicked & there's no decimal placed - place decimal point
+    e.target.classList.contains("decimal") &&
+    !display.innerText.includes(".")
+  ) {
     display.innerText += buttonValue;
   }
 
