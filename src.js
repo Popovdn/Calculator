@@ -2,13 +2,15 @@ const keypad = document.querySelector(".calculator-keypad");
 const display = document.querySelector(".calculator-display");
 const clearAllButton = document.querySelector(".clear-all");
 const clearButton = document.querySelector(".clear");
+const equalButton = document.querySelector(".equal");
 keypad.addEventListener("click", updateDisplay);
 clearAllButton.addEventListener("click", clearAll);
 clearButton.addEventListener("click", clear);
 keypad.addEventListener("click", getInput);
+equalButton.addEventListener("click", evaluateExpression);
 
-let userInput = [];
-let operatorSelected = false;
+let clearInputScreenFlag = false;
+let operatorSelectedFlag = false;
 
 function add(a, b) {
   return a + b;
@@ -52,12 +54,20 @@ function updateDisplay(e) {
   if (e.target.classList.contains("digit")) {
     if (display.innerText === "0") {
       display.innerText = "";
-    } else if (operatorSelected) {
+    } else if (clearInputScreenFlag) {
+      // * Clears input screen so user can input second operand, then resets flag for next operation
       display.innerText = "";
-      operatorSelected = false;
+      clearInputScreenFlag = false;
+      operatorSelectedFlag = true;
     }
+    display.innerText += buttonValue;
+  }
 
     display.innerText += buttonValue;
+  }
+
+  if (e.target.classList.contains("operator")) {
+    clearInputScreenFlag = true;
   }
 }
 
@@ -79,12 +89,24 @@ function getInput(e) {
 
   if (
     e.target.classList.contains("digit") ||
-    e.target.classList.contains("operator")
+    e.target.classList.contains("decimal")
   ) {
-    userInput.push(input);
+    if (operatorSelectedFlag) {
+      operandTwo += input;
+    } else {
+      operandOne += input;
+    }
+  }
+}
+
+function evaluateExpression() {
+  if (!operandOne || !operandTwo) {
+    return;
   }
 
-  if (e.target.classList.contains("operator")) {
-    operatorSelected = true;
-  }
+  let result = floatify(operate(Number(operandOne), Number(operandTwo), operator));
+  display.innerText = result;
+  operatorSelectedFlag = false;
+  operandTwo = "";
+  operandOne = result;
 }
