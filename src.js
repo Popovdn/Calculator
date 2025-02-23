@@ -101,6 +101,7 @@ function getInput(e) {
   if (e.target.classList.contains("operator")) {
     if (operatorSelectedFlag) {
       evaluateExpression();
+      operator = input;
       return;
     }
     operator = input;
