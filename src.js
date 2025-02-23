@@ -84,11 +84,20 @@ function updateDisplay(e) {
 
 function clearAll() {
   display.innerText = 0;
-  // ! Not finished - should also clear current state of the calculator
+  operandOne = "";
+  operandTwo = "";
+  operator = null;
+  operatorSelectedFlag = false;
 }
 
 function clear() {
   display.innerText = display.innerText.slice(0, -1);
+
+  if (operatorSelectedFlag) {
+    operandTwo = operandTwo.toString().slice(0, -1);
+  } else {
+    operandOne = operandOne.toString().slice(0, -1);
+  }
 
   if (display.innerText === "") {
     display.innerText = "0";
