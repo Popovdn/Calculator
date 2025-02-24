@@ -63,14 +63,14 @@ function updateDisplay(e) {
   if (e.target.classList.contains("digit")) {
     if (display.innerText === "0") {
       display.innerText = "";
-      operators.forEach((operator) => (operator.style["opacity"] = "1"));
+      operators.forEach((operator) => (operator.style["background-color"] = `rgb(178, 85, 211)`));
     } else if (clearInputScreenFlag) {
       // * Clears input screen so user can input second operand, then resets flag for next operation
       display.innerText = "";
       clearInputScreenFlag = false;
       operatorSelectedFlag = true;
 
-      operators.forEach((operator) => (operator.style["opacity"] = "1"));
+      operators.forEach((operator) => (operator.style["background-color"] = `rgb(178, 85, 211)`));
     }
     display.innerText += buttonValue;
   }
@@ -85,8 +85,8 @@ function updateDisplay(e) {
 
   if (e.target.classList.contains("operator")) {
     clearInputScreenFlag = true;
-    operators.forEach((operator) => { operator.style["opacity"] = "1"; });
-    e.target.style["opacity"] = "0.7";
+    operators.forEach((operator) => { operator.style["background-color"] = `rgb(178, 85, 211)`});
+    e.target.style["background-color"] = `rgb(42, 47, 61)`;
   }
 }
 
@@ -96,6 +96,7 @@ function clearAll() {
   operandTwo = "";
   operator = null;
   operatorSelectedFlag = false;
+  operators.forEach((operator) => { operator.style["background-color"] = `rgb(178, 85, 211)`});
 }
 
 function clear() {

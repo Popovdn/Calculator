@@ -21,6 +21,9 @@
 .wrapper {
     width: 80%;
     max-width: 420px;
+    border: 5px solid rgb(42, 47, 61);
+    padding: .5rem;
+    border-radius: 10px;
 }
 .calculator-keypad > * {
     display: flex;
@@ -38,10 +41,6 @@ button {
     border: none;
     border-radius: 15px;
     box-shadow: 0 7px #9AA6B2;
-}
-
-button:hover {
-    opacity: 0.5;
 }
 
 button:active {
