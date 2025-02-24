@@ -133,9 +133,22 @@ function evaluateExpression() {
     return;
   }
 
+  removeTraillingDots();
+
   let result = floatify(operate(Number(operandOne), Number(operandTwo), operator));
   display.innerText = result;
   operatorSelectedFlag = false;
   operandTwo = "";
   operandOne = result;
 }
+
+function removeTraillingDots() {
+  while (operandOne[operandOne.length - 1] === ".") {
+    operandOne = operandOne.toString().slice(0, -1);
+  }
+
+  while (operandTwo[operandTwo.length - 1] === ".") {
+    operandTwo = operandTwo.toString().slice(0, -1);
+  }
+}
+
