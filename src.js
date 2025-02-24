@@ -3,11 +3,13 @@ const display = document.querySelector(".calculator-display");
 const clearAllButton = document.querySelector(".clear-all");
 const clearButton = document.querySelector(".clear");
 const equalButton = document.querySelector(".equal");
+const negateButton = document.querySelector(".negation");
 keypad.addEventListener("click", updateDisplay);
 clearAllButton.addEventListener("click", clearAll);
 clearButton.addEventListener("click", clear);
 keypad.addEventListener("click", getInput);
 equalButton.addEventListener("click", evaluateExpression);
+negateButton.addEventListener("click", negate);
 
 let clearInputScreenFlag = false;
 let operatorSelectedFlag = false;
@@ -152,3 +154,12 @@ function removeTraillingDots() {
   }
 }
 
+function negate() {
+  if (operatorSelectedFlag) {
+    operandTwo = -operandTwo;
+    display.innerText = operandTwo;
+  } else {
+    operandOne = -operandOne;
+    display.innerText = operandOne;
+  }
+}
