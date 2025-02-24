@@ -4,6 +4,7 @@ const clearAllButton = document.querySelector(".clear-all");
 const clearButton = document.querySelector(".clear");
 const equalButton = document.querySelector(".equal");
 const negateButton = document.querySelector(".negation");
+const operators = [...document.querySelectorAll(".operator")];
 keypad.addEventListener("click", updateDisplay);
 clearAllButton.addEventListener("click", clearAll);
 clearButton.addEventListener("click", clear);
@@ -62,11 +63,14 @@ function updateDisplay(e) {
   if (e.target.classList.contains("digit")) {
     if (display.innerText === "0") {
       display.innerText = "";
+      operators.forEach((operator) => (operator.style["opacity"] = "1"));
     } else if (clearInputScreenFlag) {
       // * Clears input screen so user can input second operand, then resets flag for next operation
       display.innerText = "";
       clearInputScreenFlag = false;
       operatorSelectedFlag = true;
+
+      operators.forEach((operator) => (operator.style["opacity"] = "1"));
     }
     display.innerText += buttonValue;
   }
@@ -81,6 +85,8 @@ function updateDisplay(e) {
 
   if (e.target.classList.contains("operator")) {
     clearInputScreenFlag = true;
+    operators.forEach((operator) => { operator.style["opacity"] = "1"; });
+    e.target.style["opacity"] = "0.7";
   }
 }
 
