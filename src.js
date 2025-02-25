@@ -61,7 +61,7 @@ function operate(a, b, operator) {
 function updateDisplay(e) {
   let buttonValue = e.target.innerText;
   if (e.target.classList.contains("digit")) {
-    if (display.innerText === "0" || display.innerText === 'Invalid dividend') {
+    if (display.innerText === "0" || display.innerText === "Invalid dividend") {
       display.innerText = "";
       operators.forEach((operator) => (operator.style["background-color"] = `rgb(178, 85, 211)`));
     } else if (clearInputScreenFlag) {
@@ -100,6 +100,10 @@ function clearAll() {
 }
 
 function clear() {
+  if (display.innerText === "Invalid dividend") {
+    display.innerText = "0";
+  } 
+
   display.innerText = display.innerText.slice(0, -1);
 
   if (operatorSelectedFlag) {
@@ -124,7 +128,7 @@ function getInput(e) {
     }
     operator = input;
   }
-  
+
   if (
     e.target.classList.contains("digit") ||
     e.target.classList.contains("decimal")
