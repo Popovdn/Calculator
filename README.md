@@ -55,3 +55,7 @@ Toggles the current number between positive and negative
 ### `removeTrailingDots()`
 Ensures numbers do not end with unnecessary decimal points
 
+## A screenshot of the application
+
+![img.png](img.png)
+
