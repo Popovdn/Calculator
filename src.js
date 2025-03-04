@@ -102,6 +102,9 @@ function updateDisplay(e) {
     operators.forEach((operator) => { operator.style["background-color"] = LIGHT_PURPLE });
     e.target.style["background-color"] = GRAY;
   }
+  if (operator && !operandOne) {
+    clearInputScreenFlag = false;
+  }
 }
 
 function clearAll() {
