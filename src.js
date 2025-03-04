@@ -11,6 +11,8 @@ clearButton.addEventListener("click", clear);
 keypad.addEventListener("click", getInput);
 equalButton.addEventListener("click", evaluateExpression);
 negateButton.addEventListener("click", negate);
+const GRAY = `rgb(42, 47, 61)`;
+const LIGHT_PURPLE = `rgb(178, 85, 211)`;
 
 let clearInputScreenFlag = false;
 let operatorSelectedFlag = false;
@@ -63,14 +65,14 @@ function updateDisplay(e) {
   if (e.target.classList.contains("digit")) {
     if (display.innerText === "0" || display.innerText === "Invalid dividend") {
       display.innerText = "";
-      operators.forEach((operator) => (operator.style["background-color"] = `rgb(178, 85, 211)`));
+      operators.forEach((operator) => (operator.style["background-color"] = LIGHT_PURPLE));
     } else if (clearInputScreenFlag) {
       // * Clears input screen so user can input second operand, then resets flag for next operation
       display.innerText = "";
       clearInputScreenFlag = false;
       operatorSelectedFlag = true;
 
-      operators.forEach((operator) => (operator.style["background-color"] = `rgb(178, 85, 211)`));
+      operators.forEach((operator) => (operator.style["background-color"] = LIGHT_PURPLE));
     }
     display.innerText += buttonValue;
   }
@@ -85,8 +87,8 @@ function updateDisplay(e) {
 
   if (e.target.classList.contains("operator")) {
     clearInputScreenFlag = true;
-    operators.forEach((operator) => { operator.style["background-color"] = `rgb(178, 85, 211)`});
-    e.target.style["background-color"] = `rgb(42, 47, 61)`;
+    operators.forEach((operator) => { operator.style["background-color"] = LIGHT_PURPLE });
+    e.target.style["background-color"] = GRAY;
   }
 }
 
@@ -96,13 +98,13 @@ function clearAll() {
   operandTwo = "";
   operator = null;
   operatorSelectedFlag = false;
-  operators.forEach((operator) => { operator.style["background-color"] = `rgb(178, 85, 211)`});
+  operators.forEach((operator) => { operator.style["background-color"] = LIGHT_PURPLE });
 }
 
 function clear() {
   if (display.innerText === "Invalid dividend") {
     display.innerText = "0";
-  } 
+  }
 
   display.innerText = display.innerText.slice(0, -1);
 
@@ -146,7 +148,7 @@ function evaluateExpression() {
     return;
   }
 
-  removeTraillingDots();
+  removeTrailingDots();
 
   let result = floatify(operate(Number(operandOne), Number(operandTwo), operator));
   operatorSelectedFlag = false;
@@ -164,7 +166,7 @@ function evaluateExpression() {
   operandOne = result;
 }
 
-function removeTraillingDots() {
+function removeTrailingDots() {
   while (operandOne[operandOne.length - 1] === ".") {
     operandOne = operandOne.toString().slice(0, -1);
   }
