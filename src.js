@@ -11,6 +11,7 @@ clearButton.addEventListener("click", clear);
 keypad.addEventListener("click", getInput);
 equalButton.addEventListener("click", evaluateExpression);
 negateButton.addEventListener("click", negate);
+window.addEventListener('keydown', updateDisplay);
 const GRAY = `rgb(42, 47, 61)`;
 const LIGHT_PURPLE = `rgb(178, 85, 211)`;
 
@@ -61,7 +62,18 @@ function operate(a, b, operator) {
 }
 
 function updateDisplay(e) {
-  let buttonValue = e.target.innerText;
+  const buttonValue = e.target.innerText;
+
+  let keyValue = document.querySelector(`button[data-key="${e.key}"]`) || document.querySelector(`button[data-alternative-key="${e.key}"]`);
+  if (keyValue) {
+    if (e.shiftKey) {
+      const shiftKeyValue = document.querySelector(`button[data-key="${e.key}"]`);
+      shiftKeyValue.click();
+    } else {
+      keyValue.click();
+    }
+  }
+
   if (e.target.classList.contains("digit")) {
     if (display.innerText === "0" || display.innerText === "Invalid dividend") {
       display.innerText = "";
